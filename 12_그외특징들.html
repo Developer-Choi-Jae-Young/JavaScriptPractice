@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 특징</title>
+</head>
+<body>
+    <h2>* 호이스팅 (hoisting)</h2>       
+    <p>
+        모든 변수 선언문이 코드의 최상단으로 이동되는 것처럼 느껴지는 현상<br>
+        var 타입에서 확인되며, let과 const 타입에서는 호이스팅 현상이 일어나지 않는 것처럼 동작 해줌
+    </p>
+    <button onclick="hoisting()">확인</button>
+    <script>
+        function hoisting() {
+            /** var 타입 확인 **/
+            // var name;
+            console.log(name);
+            var name = "아이유";
+            console.log(name);
+
+            console.log("*************************")
+
+            /** let 타입 확인 **/
+            // console.log(name2);     // Error 발생!
+            let name2 = "아삼유";
+            console.log(name2);
+
+            /** const 타입 확인 **/
+            // console.log(name3);     // Error 발생!
+            const name3 = "아사유";
+            console.log(name3);
+        }
+    </script>
+
+    <hr>
+
+    <h2>* 스코프 (scope)</h2>
+    <p>
+        변수 사용 가능 범위 <br>
+        - var : functional scope. 변수가 선언된 함수영역 내에서 사용 가능<br>
+        - let, const : block scope. 변수가 선언된 블럭({}) 내에서만 사용 가능(자바 유사!)
+    </p>
+    <button onclick="funcScope()">확인(var)</button>
+    <script>
+        function funcScope() {
+            var nick = "보라돌이";
+            console.log(nick);
+
+            // test1();     // 다른 함수에서는 오류 발생!
+            test2();        // 함수 내에 선언된 또 다른 함수에서는 사용가능!
+
+            function test2() {
+                console.log(nick);
+            }
+
+            if(true) {
+                var age = 40;
+                // console.log(age);
+            }
+            console.log(age);
+
+            for(var i = 0; i < 5; i++) {}
+            console.log(i);
+        }
+
+        function test1() {
+            console.log(nick);
+        }
+    </script>
+</body>
+</html>
